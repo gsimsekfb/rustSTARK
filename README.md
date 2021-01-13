@@ -13,6 +13,17 @@ g++ -shared -fPIC -o libhello.so hello.cpp
 
 // Run rust app
 cargo r
+
+// Output
+Hello gman
+Hello gman
+Hello gman
+  // main.rs calling C++ function -
+  // void say_hello(std::string const& str, int reps) -
+  // from libhello_cpp/hello.cpp 
+
+
+
 ```
 
 ### Sources
