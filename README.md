@@ -1,9 +1,11 @@
 ## Call C++ from Rust using shared library
 
-### Steps  
+### How to use  
 
 ```
 Ubuntu 20.04
+
+// Edit libhello_cpp/hello.cpp as you like
 
 // Create C++ shared library for libhello_cpp/hello.cpp 
 cd libhello_cpp
