@@ -8,16 +8,16 @@ In this app, [src/main.rs](https://github.com/simsekgokhan/rust_call_cpp_so/blob
 ```
 Ubuntu 20.04
 
-// Edit libhello_cpp/hello.cpp as you like
+// 1. Edit libhello_cpp/hello.cpp as you like
 
-// Create C++ shared library for libhello_cpp/hello.cpp 
+// 2. Create C++ shared library for libhello_cpp/hello.cpp 
 cd libhello_cpp
 g++ -shared -fPIC -o libhello.so hello.cpp 
 
-// Add link path - edit the username
+// 3. Add link path - edit the username
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/gsimsek/rust_call_cpp/libhello_cpp/
 
-// Run rust app
+// 4. Run rust app
 cargo r
 
 // Output
