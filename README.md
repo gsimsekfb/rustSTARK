@@ -1,5 +1,8 @@
 ## Call C++ from Rust using shared library
 
+In this app, [src/main.rs](https://github.com/simsekgokhan/rust_call_cpp_so/blob/main/src/main.rs) calls C++ function `void say_hello(std::string const& str, int reps)` from [libhello_cpp/hello.cpp](https://github.com/simsekgokhan/rust_call_cpp_so/blob/main/libhello_cpp/hello.cpp).
+  
+  
 ### How to use  
 
 ```
