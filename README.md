@@ -14,6 +14,9 @@ Ubuntu 20.04
 cd libhello_cpp
 g++ -shared -fPIC -o libhello.so hello.cpp 
 
+// Add link path - edit the username
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/gsimsek/rust_call_cpp/libhello_cpp/
+
 // Run rust app
 cargo r
 
