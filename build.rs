@@ -13,10 +13,10 @@ fn main() {
         .cpp(true)
         .file("hello.cpp")
         .compile("libhelloc.a");
-
+    
     println!("cargo:rustc-link-lib=static=helloc"); 
-    // println!("cargo:rustc-link-search=native=/home/gsimsek/cpplib/");
-    println!("cargo:rustc-link-search=native=/home/gsimsek/rust_call_cpp/libhello_cpp/");
+    println!("cargo:rustc-link-lib=dylib=stdc++");
+    // Link path for libhello.so
+    println!("cargo:rustc-link-search=native=/home/gsimsek/rust_call_cpp/libhello_cpp/");        
     println!("cargo:rustc-link-lib=dylib=hello"); 
-    println!("cargo:rustc-link-lib=dylib=stdc++");  
 }
