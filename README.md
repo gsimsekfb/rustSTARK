@@ -1,0 +1,1 @@
+g++ -shared -fPIC -o libhello.so hello.cpp 
