@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo "Re-building... "
+echo "-------------------------------------"
+
+# Show executed shell commands
+set -o xtrace
+
+cargo clean 
+cargo r
