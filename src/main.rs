@@ -1,37 +1,37 @@
 extern "C" {
-    pub fn say_hello_c(name: *const ::std::os::raw::c_char, 
-                       reps: ::std::os::raw::c_int);
+    pub fn rescue_verify_c(
+        argc: ::std::os::raw::c_int,
+        argv: *const *const ::std::os::raw::c_char,
+    ) -> ::std::os::raw::c_int;
 }
 
-extern "C" {
-    pub fn f1_c(name: *const ::std::os::raw::c_char, 
-                       reps: ::std::os::raw::c_int);
-}
-
-extern "C" {
-    pub fn f3_c(name: *const ::std::os::raw::c_char, 
-                       reps: ::std::os::raw::c_int);
-}
-
-extern "C" {
-    pub fn feth_c(name: *const ::std::os::raw::c_char, 
-                       reps: ::std::os::raw::c_int);
-}
-
-extern "C" { pub fn hello_c(); }     // ethS: libhello.a
-extern "C" { pub fn hellota_c(); }   // ethS: libtest-air.a
-extern "C" { pub fn hello2_c(); }    // cmake: libhello2.a
+// extern crate libc;
+use ::std::os::raw::c_char;
+use ::std::os::raw::c_int;
+use std::ffi::CString;
 
 fn main() {
+    // create a vector of zero terminated strings
+    let args = std::env::args().map(|arg| CString::new(arg).unwrap() ).collect::<Vec<CString>>();
+    // convert the strings to raw pointers
+    let c_args = args.iter().map(|arg| arg.as_ptr()).collect::<Vec<*const c_char>>();    
+
+    let args2: Vec<String> = std::env::args().collect();
+    println!("--- args2: {:?}", args2);
+
     unsafe {
-        hello_c();
+        println!("------------------ unsafe C++ block");
+        rescue_verify_c(c_args.len() as c_int, c_args.as_ptr());
+        // feth_c("gmann\0".as_ptr() as *const _, 1);
+        // hello_c();
         // hellota_c();
         // hello2_c();
         // say_hello_c("gmann\0".as_ptr() as *const _, 3);
         // f1_c("gmann\0".as_ptr() as *const _, 1);
-        feth_c("gmann\0".as_ptr() as *const _, 1);
         // f3_c("f3: cmake\0".as_ptr() as *const _, 1);
+        println!("------------------ end of unsafe");
     }
-
-    // println!("Hello, world!");
+    
+    println!("----------------------------------------");
+    println!("End of rust main\n");
 }
