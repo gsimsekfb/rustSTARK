@@ -14,21 +14,16 @@ Ubuntu 20.04
 cd libhello_cpp
 g++ -shared -fPIC -o libhello.so hello.cpp 
 
-// 3. Add link path - edit the username
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/gsimsek/rust_call_cpp/libhello_cpp/
-
+// 3. Put your dependency into build.rs
+println!("cargo:rustc-link-search=native=/home/gsimsek/rust_call_cpp/libhello_cpp/");        
+println!("cargo:rustc-link-lib=dylib=hello"); 
+    
 // 4. Run rust app
-cargo r
-
-// Output
-Hello gman
-Hello gman
-Hello gman
+$ cargo r
+Hello from C++ say_hello()
   // main.rs calling C++ function -
   // void say_hello(std::string const& str, int reps) -
   // from libhello_cpp/hello.cpp 
-
-
 
 ```
 
