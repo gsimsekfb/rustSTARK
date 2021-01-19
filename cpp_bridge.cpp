@@ -2,8 +2,13 @@
 
 // ---------------------------- ethS ---------------------------- //
 
-// --- librescue_verifier.a
+// --- librescue_prover.a
+extern int rescue_prove(int argc, char** argv);
+extern "C" int rescue_prove_c(int argc, char** argv) {
+    return rescue_prove(argc, argv);
+}
 
+// --- librescue_verifier.a
 extern int rescue_verify(int argc, char** argv);
 extern "C" int rescue_verify_c(int argc, char** argv) {
     return rescue_verify(argc, argv);
@@ -12,7 +17,6 @@ extern "C" int rescue_verify_c(int argc, char** argv) {
 // ---------------------------- ethS end ----------------------- //
 
 // --- libtest.a
-
 extern void f1(std::string const& str, int reps);
 extern "C" void f1_c(const char* name, int reps) {
     f1(name, reps);

@@ -23,11 +23,12 @@ fn main() {
     println!("cargo:rustc-link-lib=dylib=air_test_utils"); 
     println!("cargo:rustc-link-lib=dylib=domains"); 
     println!("cargo:rustc-link-lib=dylib=input_utils"); 
-    println!("cargo:rustc-link-lib=dylib=prover_main_helper"); 
     println!("cargo:rustc-link-lib=dylib=starkware_gbenchmark"); 
     println!("cargo:rustc-link-lib=dylib=starkware_gtest"); 
     // rescue_verifier and its dependencies   
     println!("cargo:rustc-link-lib=dylib=rescue_verifier");       // w2
+    println!("cargo:rustc-link-lib=dylib=rescue_prover");         // w2
+    println!("cargo:rustc-link-lib=dylib=prover_main_helper"); 
     println!("cargo:rustc-link-lib=dylib=verifier_main_helper");       
     println!("cargo:rustc-link-lib=dylib=stark"); 
     println!("cargo:rustc-link-lib=dylib=fri"); 

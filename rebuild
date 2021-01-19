@@ -7,4 +7,4 @@ echo "-------------------------------------"
 set -o xtrace
 
 cargo clean 
-cargo r
+cargo b
