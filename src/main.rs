@@ -67,18 +67,23 @@ pub fn rescue_verify(in_file: &str) {
 
 // --- main
 fn main() {    
-    rescue_verify("/opt/example/proof.json");
+    let first_arg = std::env::args().nth(1).unwrap();
 
-    // rescue_prove(
-    //     "/opt/example/rescue_params.json",
-    //     "/opt/example/rescue_prover_config.json",      
-    //     "/opt/example/rescue_public_input.json", 
-    //     "/opt/example/rescue_private_input.json",
-    //     "/opt/example/proof.json",        
-    // );
+    if first_arg == "v" {
+        rescue_verify("/opt/example/proof.json");
+    }
+    else {
+        rescue_prove(
+            "/opt/example/rescue_params.json",
+            "/opt/example/rescue_prover_config.json",      
+            "/opt/example/rescue_public_input.json", 
+            "/opt/example/rescue_private_input.json",
+            "/opt/example/proof.json",        
+        );
+    }
     
     // ---- helpers
-    // print_type_of(&c_args);        
+    // print_type_of(&args);        
     // println!("c_args: {:?}", c_args); 
     println!(">>>>>>>>>>>>>>>>>>>>>>>>>>");
     println!("End of rust main()\n");

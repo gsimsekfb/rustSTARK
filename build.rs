@@ -8,17 +8,20 @@
     for example using cl on MSVC.
 */
 
+#[allow(non_snake_case)]
+
 fn main() {
     cc::Build::new()
         .cpp(true)
         .compiler("/usr/bin/clang++")
         .file("cpp_bridge.cpp")
         .compile("libcpp_bridge.a");
-    
+        
+    let PROJECT_DIR = std::env::var("CARGO_MANIFEST_DIR").unwrap();
+    let ethSTARK_LIB_DIR = PROJECT_DIR + "/eth/";        
     println!("cargo:rustc-link-lib=static=cpp_bridge"); 
     println!("cargo:rustc-link-lib=dylib=stdc++");    
-    println!("cargo:rustc-link-search=native=/home/gsimsek/rust_call_cpp_so/eth/");
-    println!("cargo:rustc-link-search=native=/home/gsimsek/ethSTARK/build/Release/src/starkware/main/rescue/");
+    println!("cargo:rustc-link-search=native={}", ethSTARK_LIB_DIR);
     // --- ethS libs
     println!("cargo:rustc-link-lib=dylib=air_test_utils"); 
     println!("cargo:rustc-link-lib=dylib=domains"); 
