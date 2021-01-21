@@ -42,9 +42,9 @@ pub fn rescue_prove(
     let c_args = args_vec.iter().map(|arg| arg.as_ptr())
                                 .collect::<Vec<*const c_char>>();
     unsafe { 
-        println!("----------- unsafe C++ block");
+        println!("\n----------- unsafe C++ call   -----------\n");
         rescue_prove_c(c_args.len() as c_int, c_args.as_ptr()); 
-        println!("----------- end of unsafe C++");
+        println!("\n----------- end of unsafe C++ -----------\n");
     }    
 }
 
@@ -59,7 +59,7 @@ pub fn rescue_verify(in_file: &str) {
     let c_args = args_vec.iter().map(|arg| arg.as_ptr())
                                 .collect::<Vec<*const c_char>>();
     unsafe { 
-        println!("\n----------- unsafe C++ block  -----------\n");
+        println!("\n----------- unsafe C++ call   -----------\n");
         rescue_verify_c(c_args.len() as c_int, c_args.as_ptr()); 
         println!("\n----------- end of unsafe C++ -----------\n");
     }    
@@ -67,7 +67,6 @@ pub fn rescue_verify(in_file: &str) {
 
 // --- main
 fn main() {    
-
     rescue_verify("/opt/example/proof.json");
 
     // rescue_prove(
