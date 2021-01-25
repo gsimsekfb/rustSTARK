@@ -52,29 +52,26 @@ pub fn rescue_prove(
     }    
 }
 
-pub fn rescue_verify() -> bool {
+pub fn rescue_verify(
+    proof_hex: &str,
+    public_input: &str, 
+    parameters: &str, 
+    annotation_file_name: &str
+) -> bool {
+    // Convert &str -> CString -> *const c_char
+    let args = [proof_hex, public_input, parameters, annotation_file_name];
+    let args_vec = args.iter().map(|&arg| CString::new(arg).unwrap())
+                              .collect::<Vec<CString>>();
+    let c_args = args_vec.iter().map(|arg| arg.as_ptr())
+                                .collect::<Vec<*const c_char>>();   
+    let [proof_hex, public_input, parameters, annotation_file_name] 
+        = [c_args[0], c_args[1], c_args[2], c_args[3]];
+        
     unsafe { 
         println!("\n----------- unsafe C++ call   -----------\n");
-
-        // proof
-        let pp = constants::PROOF_HEX.to_owned() + "\0";
-        let proof = pp.as_ptr() as *const _;
-        // public_input
-        let x = r#" {"chain_length":3,"output":["0xdb0a16d9f9cedae","0x244b64cb5a39a2b","0x1f6c22cd3cfdde49","0x4bf27b6fae084cb"]} "#;
-        let xx = x.to_owned() + "\0";
-        let public_input = xx.as_ptr() as *const _;
-        // 
-        // parameters
-        let y = r#" {"stark":{"fri":{"fri_step_list":[1,2,2],"last_layer_degree_bound":1,"n_queries":30,"proof_of_work_bits":20},"log_n_cosets":2}} "#;
-        let yy = y.to_owned() + "\0";
-        let parameters = yy.as_ptr() as *const _;
-        // annotation_file_name
-        let a = "";     // "annotation.txt"
-        let aa = a.to_owned() + "\0";
-        let annotation_file_name = aa.as_ptr() as *const _;
-
-        let result = rescue_verify_c(proof, public_input, parameters, annotation_file_name);
-
+        let result = rescue_verify_c(
+            proof_hex, public_input, parameters, annotation_file_name
+        );
         println!("\n----------- end of unsafe C++ -----------\n");
 
         result
@@ -86,7 +83,13 @@ fn main() {
     // let first_arg = std::env::args().nth(1).unwrap();
 
     // if first_arg == "v" {
-        println!("--- Rust: Proof verified: {:?}", rescue_verify());
+        let result = rescue_verify(
+            constants::PROOF_HEX, 
+            constants::PUBLIC_INPUT,
+            constants::PARAMETERS, 
+            ""
+        );
+        println!("--- Rust: Proof verified: {:?}", result);
     // }
     // else {
     //     rescue_prove(
