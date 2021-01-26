@@ -21,8 +21,8 @@ rust_call_cpp = { git = "https://github.com/simsekgokhan/rust_call_cpp_so", bran
 main.rs
 
 ```
-mod example_proof;
 use rust_call_cpp::rescue_verify;
+use rust_call_cpp::example_proof;
 
 fn main() {
     println!("Hello, world!");    
