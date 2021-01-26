@@ -1,0 +1,1 @@
+cargo r -- --in_file ~/ethSTARK/example/proof.json --logtostderr

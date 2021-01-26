@@ -1,0 +1,7 @@
+cargo r -- \
+      --parameter_file ~/ethSTARK/example/rescue_params.json \
+      --prover_config_file ~/ethSTARK/example/rescue_prover_config.json \
+      --public_input_file ~/ethSTARK/example/rescue_public_input.json \
+      --private_input_file ~/ethSTARK/example/rescue_private_input.json \
+      --out_file ~/ethSTARK/example/proof.json \
+      --logtostderr

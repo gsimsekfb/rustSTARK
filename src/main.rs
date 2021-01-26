@@ -1,4 +1,4 @@
-mod constants;
+mod example_proof;
 
 use ::std::os::raw::c_char;
 use ::std::os::raw::c_int;
@@ -84,9 +84,9 @@ fn main() {
 
     // if first_arg == "v" {
         let result = rescue_verify(
-            constants::PROOF_HEX, 
-            constants::PUBLIC_INPUT,
-            constants::PARAMETERS, 
+            example_proof::PROOF_HEX, 
+            example_proof::PUBLIC_INPUT,
+            example_proof::PARAMETERS, 
             ""
         );
         println!("--- Rust: Proof verified: {:?}", result);
