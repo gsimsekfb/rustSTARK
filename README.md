@@ -1,9 +1,60 @@
-## Call C++ from Rust using shared library method
 
-In this app, [src/main.rs](https://github.com/simsekgokhan/rust_call_cpp_so/blob/main/src/main.rs) calls C++ function `void say_hello(std::string const& str, int reps)` from [libhello_cpp/hello.cpp](https://github.com/simsekgokhan/rust_call_cpp_so/blob/main/libhello_cpp/hello.cpp).
-  
-  
-### How to use  
+
+
+### How to use this library? 
+
+Make these changes in your repo:  
+
+.cargo/config.toml
+```
+[build]
+rustflags = ["-C", "link-args=-no-pie"]
+```
+
+Cargo.toml
+```
+[dependencies]
+rust_call_cpp = { git = "https://github.com/simsekgokhan/rust_call_cpp_so", branch = "main" }
+```
+
+
+main.rs
+
+```
+mod example_proof;
+use rust_call_cpp::rescue_verify;
+
+fn main() {
+    println!("Hello, world!");    
+
+    let result = rescue_verify(
+        example_proof::PROOF_HEX, 
+        example_proof::PUBLIC_INPUT,
+        example_proof::PARAMETERS, 
+        ""
+    );
+    println!("--- Rust: Proof verified: {:?}", result);
+}
+```
+
+Expected output:
+
+```
+----------- unsafe C++ call   -----------
+
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0126 13:57:38.424813  3635 rescue_verifier.cc:35] Proof verified successfully.
+
+----------- end of unsafe C++ -----------
+
+--- Rust: Proof verified: true
+```
+
+
+
+
+
+### Info: How to call C++ from Rust using shared library method
 
 ```
 Ubuntu 20.04
