@@ -54,23 +54,23 @@ pub fn rescue_prove(
 
 pub fn rescue_verify(
     proof_hex: &str,
-    public_input: &str, 
-    parameters: &str, 
+    public_input_json: &str, 
+    parameters_json: &str, 
     annotation_file_name: &str
 ) -> bool {
     // Convert &str -> CString -> *const c_char
-    let args = [proof_hex, public_input, parameters, annotation_file_name];
+    let args = [proof_hex, public_input_json, parameters_json, annotation_file_name];
     let args_vec = args.iter().map(|&arg| CString::new(arg).unwrap())
                               .collect::<Vec<CString>>();
     let c_args = args_vec.iter().map(|arg| arg.as_ptr())
                                 .collect::<Vec<*const c_char>>();   
-    let [proof_hex, public_input, parameters, annotation_file_name] 
+    let [proof_hex, public_input_json, parameters_json, annotation_file_name] 
         = [c_args[0], c_args[1], c_args[2], c_args[3]];
         
     unsafe { 
         println!("\n----------- unsafe C++ call   -----------\n");
         let result = rescue_verify_c(
-            proof_hex, public_input, parameters, annotation_file_name
+            proof_hex, public_input_json, parameters_json, annotation_file_name
         );
         println!("\n----------- end of unsafe C++ -----------\n");
 
