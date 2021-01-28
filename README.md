@@ -25,7 +25,6 @@ use rust_call_cpp::rescue_verify;
 use rust_call_cpp::example_proof;
 
 fn main() {
-    println!("Hello, world!");    
 
     let result = rescue_verify(
         example_proof::PROOF_HEX, 
