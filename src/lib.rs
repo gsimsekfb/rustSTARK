@@ -93,16 +93,17 @@ mod tests {
         assert!(result);        
     }
 
-    #[test]
-    fn bad_verify_with_cpp_exception() {
-        let result = rescue_verify(
-            "foo", 
-            example_proof::PUBLIC_INPUT,
-            example_proof::PARAMETERS, 
-            ""
-        );        
-        assert_eq!(result, false);
-    }
+    // Todo: enable later, test is working but too noisy 
+    // #[test]
+    // fn bad_verify_with_cpp_exception() {
+    //     let result = rescue_verify(
+    //         "foo", 
+    //         example_proof::PUBLIC_INPUT,
+    //         example_proof::PARAMETERS, 
+    //         ""
+    //     );        
+    //     assert_eq!(result, false);
+    // }
 
     #[test]
     fn bad_verify_wrong_proof() {
