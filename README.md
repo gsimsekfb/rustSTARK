@@ -1,5 +1,19 @@
 
 
+### API
+
+```
+pub fn rescue_verify(
+    proof_hex: &str,
+    public_input_json: &str, 
+    parameters_json: &str, 
+    annotation_file_name: &str
+) -> bool {
+```
+
+**Example params:**  
+https://github.com/simsekgokhan/rustSTARK/blob/main/src/example_proof.rs
+
 
 ### How to use this library? 
 
