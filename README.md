@@ -1,4 +1,7 @@
 
+### INFO
+
+This Rust library attempts to create a basic API for C++ library https://github.com/simsekgokhan/ethSTARK.  
 
 ### API
 
