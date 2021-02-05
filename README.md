@@ -1,9 +1,10 @@
 
 ### INFO
 
-This Rust library attempts to create a basic API for C++ library https://github.com/simsekgokhan/ethSTARK. 
+This Rust library creates a basic wrapper/API for C++ library https://github.com/simsekgokhan/ethSTARK. 
 
-Currently, using the quickest option which is staticly linking with these ethSTARK library files: https://github.com/simsekgokhan/rustSTARK/tree/main/eth
+Currently, using the quickest option which is linking with these ethSTARK static library files here:  
+https://github.com/simsekgokhan/rustSTARK/tree/main/ethSTARK
 
 ### API
 
@@ -16,7 +17,7 @@ pub fn rescue_verify(
 ) -> bool { .. }
 ```
 
-**Example params:**  
+**Example parameters:**  
 https://github.com/simsekgokhan/rustSTARK/blob/main/src/example_proof.rs  
 // Also in file format:  
 https://github.com/simsekgokhan/rustSTARK/tree/main/example
