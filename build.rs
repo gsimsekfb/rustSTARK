@@ -18,7 +18,7 @@ fn main() {
         .compile("libcpp_bridge.a");
         
     let PROJECT_DIR = std::env::var("CARGO_MANIFEST_DIR").unwrap();
-    let ethSTARK_LIB_DIR = PROJECT_DIR + "/eth/";        
+    let ethSTARK_LIB_DIR = PROJECT_DIR + "/ethSTARK/";        
     println!("cargo:rustc-link-lib=static=cpp_bridge"); 
     println!("cargo:rustc-link-lib=dylib=stdc++");    
     println!("cargo:rustc-link-search=native={}", ethSTARK_LIB_DIR);
