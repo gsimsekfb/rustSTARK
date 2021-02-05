@@ -29,8 +29,8 @@ fn main() {
     println!("cargo:rustc-link-lib=dylib=starkware_gbenchmark"); 
     println!("cargo:rustc-link-lib=dylib=starkware_gtest"); 
     // rescue_verifier and its dependencies   
-    println!("cargo:rustc-link-lib=dylib=rescue_verifier");       // w2
-    println!("cargo:rustc-link-lib=dylib=rescue_prover");         // w2
+    println!("cargo:rustc-link-lib=dylib=rescue_verifier");
+    println!("cargo:rustc-link-lib=dylib=rescue_prover");
     println!("cargo:rustc-link-lib=dylib=prover_main_helper"); 
     println!("cargo:rustc-link-lib=dylib=verifier_main_helper");       
     println!("cargo:rustc-link-lib=dylib=stark"); 
@@ -50,7 +50,12 @@ fn main() {
     println!("cargo:rustc-link-lib=dylib=flag_validators");     
     println!("cargo:rustc-link-lib=dylib=task_manager"); 
     println!("cargo:rustc-link-lib=dylib=error_handling"); 
-    println!("cargo:rustc-link-lib=dylib=dw"); 
+    println!("cargo:rustc-link-lib=dylib=dw");
+    println!("cargo:rustc-link-lib=dylib=elf");
+    println!("cargo:rustc-link-lib=dylib=ebl");
+    println!("cargo:rustc-link-lib=dylib=z");
+    println!("cargo:rustc-link-lib=dylib=bz2");
+    println!("cargo:rustc-link-lib=dylib=lzma");
     println!("cargo:rustc-link-lib=dylib=rescue_statement"); 
     println!("cargo:rustc-link-lib=dylib=rescue_air"); 
     println!("cargo:rustc-link-lib=dylib=periodic_column"); 
