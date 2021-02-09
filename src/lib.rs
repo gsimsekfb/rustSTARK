@@ -93,6 +93,17 @@ mod tests {
         assert!(result);        
     }
 
+    #[test]
+    fn bad_verify_wrong_proof() {
+        let result = rescue_verify(
+            "0xab",
+            example_proof::PUBLIC_INPUT,
+            example_proof::PARAMETERS, 
+            ""
+        );        
+        assert_eq!(result, false);
+    }    
+
     // Todo: enable later, test is working but too noisy 
     // #[test]
     // fn bad_verify_with_cpp_exception() {
@@ -105,27 +116,17 @@ mod tests {
     //     assert_eq!(result, false);
     // }
 
-    #[test]
-    fn bad_verify_wrong_proof() {
-        let result = rescue_verify(
-            "0xab",
-            example_proof::PUBLIC_INPUT,
-            example_proof::PARAMETERS, 
-            ""
-        );        
-        assert_eq!(result, false);
-    }    
-
-    #[test]
-    fn prove() {
-        let _result = rescue_prove(
-            "/opt/example/rescue_params.json",
-            "/opt/example/rescue_prover_config.json",      
-            "/opt/example/rescue_public_input.json", 
-            "/opt/example/rescue_private_input.json",
-            "/opt/example/proof.json",        
-        );     
-        // assert_eq!(result, 0);   // todo
-    }    
+    // Todo: enable later, need to change prove() API
+    // #[test]
+    // fn prove() {
+    //     let _result = rescue_prove(
+    //         "/opt/example/rescue_params.json",
+    //         "/opt/example/rescue_prover_config.json",      
+    //         "/opt/example/rescue_public_input.json", 
+    //         "/opt/example/rescue_private_input.json",
+    //         "/opt/example/proof.json",        
+    //     );     
+    //     // assert_eq!(result, 0);   // todo
+    // }    
     
 }
