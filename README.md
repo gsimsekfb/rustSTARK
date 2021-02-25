@@ -6,6 +6,8 @@ This Rust library creates a basic wrapper/API for C++ library https://github.com
 Currently, using the quickest option which is linking with these ethSTARK static library files here:  
 https://github.com/simsekgokhan/rustSTARK/tree/main/ethSTARK
 
+
+
 ### API
 
 ```
@@ -15,6 +17,15 @@ pub fn rescue_verify(
     parameters_json: &str, 
     annotation_file_name: &str
 ) -> bool { .. }
+
+// Note: prove() has the old signature - which accepts file paths
+pub fn rescue_prove(
+    parameter_file: &str,
+    prover_config_file: &str,
+    public_input_file: &str,
+    private_input_file: &str,
+    out_file: &str
+) { .. }
 ```
 
 **Example parameters:**  
