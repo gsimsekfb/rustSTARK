@@ -1,7 +1,7 @@
 
 ### INFO
 
-This Rust library creates a basic wrapper/API for C++ library https://github.com/simsekgokhan/ethSTARK. 
+This Rust library creates a wrapper/API for C++ library https://github.com/simsekgokhan/ethSTARK. 
 
 Currently, using the quickest option which is linking with these ethSTARK static library files here:  
 https://github.com/simsekgokhan/rustSTARK/tree/main/ethSTARK
